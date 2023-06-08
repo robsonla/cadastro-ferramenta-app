@@ -43,6 +43,11 @@ const styles = StyleSheet.create({
         backgroundColor: "#edebe8",
     },
 
+    btnExcluir: {
+        alignItems: 'center',
+        marginBottom: 20,
+    },
+
     btn: {
         backgroundColor: "#1c1c23",
         borderRadius: 5,

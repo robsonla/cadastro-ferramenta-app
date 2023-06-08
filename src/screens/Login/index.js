@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import styles from './style';
 import firebase from '../../config/firebase'
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { Entypo } from '@expo/vector-icons'; 
+import { AntDesign } from '@expo/vector-icons'; 
 
 export default function Login({ navigation }) {
     const [email, setEmail] = useState("");
@@ -46,29 +48,40 @@ export default function Login({ navigation }) {
     return (
         <View style={styles.login}>
 
-            <Text style={styles.label_1}>Bem vindo de volta!</Text>
+            <View style={styles.boxLogo}>
+                <Image style={styles.logo} source={require('../../../assets/logo_2.jpeg')} />
+            </View>
+
+            <Text style={styles.label_1}>DEJ Ferramentaria</Text>
             <Text style={styles.label_2}>Faça o login para continuar.</Text>
 
             {errorLogin != null &&
                 <Text style={styles.alert}>{errorLogin}</Text>
             }
 
-            <TextInput
-                style={styles.formInput}
-                placeholder='E-mail'
-                placeholderTextColor={"rgba(255,255,255,0.4)"}
-                value={email}
-                onChangeText={setEmail}
-            />
-            <TextInput
-                style={styles.formInput}
-                secureTextEntry={true}
-                placeholder='Senha'
-                placeholderTextColor={"rgba(255,255,255,0.4)"}
-                value={password}
-                onChangeText={setPassword}
-            />
+            <View style={styles.direction}>
+                <TextInput
+                    style={styles.formInput}
+                    placeholder='E-mail'
+                    placeholderTextColor={"rgba(255,255,255,0.4)"}
+                    value={email}
+                    onChangeText={setEmail}
+                />
+                <Entypo style={styles.icon} name="mail"/>
+            </View>
 
+            <View style={styles.direction}> 
+                <TextInput
+                    style={styles.formInput}
+                    secureTextEntry={true}
+                    placeholder='Senha'
+                    placeholderTextColor={"rgba(255,255,255,0.4)"}
+                    value={password}
+                    onChangeText={setPassword}
+                />
+                <AntDesign style={styles.icon} name="lock"/>
+            </View>
+            
             <TouchableOpacity
                 style={styles.formButton}
                 onPress={validate}

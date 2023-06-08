@@ -1,31 +1,36 @@
-import { useState } from 'react';
-import { Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { useEffect, useState } from 'react';
+import { Text, TextInput, TouchableOpacity, View, props } from 'react-native'
+import React from 'react';
 import styles from './style'
 import firebase from '../../config/firebase'
 import { getFirestore } from 'firebase/firestore'
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
+import { collection, addDoc, serverTimestamp, doc, updateDoc } from 'firebase/firestore'
 const db = getFirestore(firebase)
 import { Entypo } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';  
 
-export default function CreateFerramenta({navigation}){
-    const [cod, setCod] = useState("")
-    const [descricao, setDescricao] = useState("")
-    const [medida, setMedida] = useState("")
-    const [tipo, setTipo] = useState("")
-    const [errorCreateFerramenta, setErrorCreateFerramenta] = useState(null)
+export default function Edit({navigation, route}){
 
+    const [cod, setCod] = useState(route.params.cod)
+    const [descricao, setDescricao] = useState(route.params.desc)
+    const [medida, setMedida] = useState(route.params.med)
+    const [tipo, setTipo] = useState(route.params.tip)
+    const [errorCreateFerramenta, setErrorCreateFerramenta] = useState(null)
+    
     const validade = () => {
         if(cod == "" || descricao == "" || medida == "" || tipo == ""){
             setErrorCreateFerramenta("Preencha todos os campos!")
         }else{
             setErrorCreateFerramenta(null)
-            createFerramenta()
+            editFerramenta()
         }
     }
 
-    const createFerramenta = () => {
-        const newFerramenta = addDoc(collection(db, 'ferramentas'), {
+    const editFerramenta = () => {
+        
+        const ferramentas = doc(db, "ferramentas", route.params.id);
+
+        updateDoc(ferramentas, {
             cod: cod,
             descricao: descricao,
             medida: medida,
@@ -42,7 +47,7 @@ export default function CreateFerramenta({navigation}){
                 <Text style={styles.alert}>{errorCreateFerramenta}</Text>
             }
 
-            <View style={styles.direction}>
+<View style={styles.direction}>
                 <TextInput
                     style={styles.formInput}
                     placeholder='Código'
@@ -85,13 +90,14 @@ export default function CreateFerramenta({navigation}){
                 />
                 <MaterialIcons style={styles.icon} name="category"/>
             </View>
-            
+
             <TouchableOpacity
                 style={styles.formBtn}
-                onPress={validade}
+                onPress={validade} 
             >
-                <Text style={styles.textBtn}>Cadastrar</Text>
+                <Text style={styles.textBtn}>Atualizar</Text>
             </TouchableOpacity>
+
         </View>
     );
 }

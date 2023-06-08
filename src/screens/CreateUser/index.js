@@ -2,6 +2,10 @@ import React, { useState } from 'react'
 import { TextInput, Text, TouchableOpacity, View } from 'react-native'
 import styles from './style'
 import firebase from '../../config/firebase'
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { AntDesign } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';  
+import { FontAwesome } from '@expo/vector-icons'; 
 
 export default function CreateUser({navigation}) {
     const [nome, setNome] = useState("")
@@ -46,36 +50,53 @@ export default function CreateUser({navigation}) {
                 <Text style={styles.alert}>{errorCreateUser}</Text>
             }
             
-            <TextInput
-                style={styles.formInput}
-                placeholder='Nome'
-                placeholderTextColor={"rgba(255,255,255,0.3)"}
-                value={nome}
-                onChangeText={setNome}
-            />
+            <View style={styles.direction}>
+                <TextInput
+                    style={styles.formInput}
+                    placeholder='Nome'
+                    placeholderTextColor={"rgba(255,255,255,0.3)"}
+                    value={nome}
+                    onChangeText={setNome}
+                />
+                <FontAwesome style={styles.icon} name="user"/>
+            </View>
             
-            <TextInput
-                style={styles.formInput}
-                placeholder='Telefone'
-                placeholderTextColor={"rgba(255,255,255,0.3)"}
-                value={telefone}
-                onChangeText={setTelefone}
-            />
-            <TextInput name="mail" size={24} color="black"
-                style={styles.formInput}
-                placeholder='E-mail'
-                placeholderTextColor={"rgba(255,255,255,0.3)"}
-                value={email}
-                onChangeText={setEmail}
-            />
-            <TextInput
-                style={styles.formInput}
-                secureTextEntry={true}
-                placeholder='Senha'
-                placeholderTextColor={"rgba(255,255,255,0.3)"}
-                value={password}
-                onChangeText={setPassword}
-            />
+            <View style={styles.direction}>
+                <TextInput
+                    style={styles.formInput}
+                    placeholder='Telefone'
+                    placeholderTextColor={"rgba(255,255,255,0.3)"}
+                    value={telefone}
+                    onChangeText={setTelefone}
+                />
+                <Entypo style={styles.icon} name="phone"/>
+            </View>
+            
+
+            <View style={styles.direction}>
+                <TextInput name="mail" size={24} color="black"
+                    style={styles.formInput}
+                    placeholder='E-mail'
+                    placeholderTextColor={"rgba(255,255,255,0.3)"}
+                    value={email}
+                    onChangeText={setEmail}
+                />
+                <Entypo style={styles.icon} name="mail"/>
+            </View>
+           
+
+            <View style={styles.direction}>
+                <TextInput
+                    style={styles.formInput}
+                    secureTextEntry={true}
+                    placeholder='Senha'
+                    placeholderTextColor={"rgba(255,255,255,0.3)"}
+                    value={password}
+                    onChangeText={setPassword}
+                />
+                <AntDesign style={styles.icon} name="lock"/>
+            </View>
+            
 
             <TouchableOpacity
                 style={styles.formButton}

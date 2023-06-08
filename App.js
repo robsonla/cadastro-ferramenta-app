@@ -8,7 +8,7 @@ import CreateUser from './src/screens/CreateUser/';
 import Cadastro from "./src/screens/Cadastro";
 import CreateFerramenta from './src/screens/CreateFerramenta';
 import Logout from './src/screens/Logout';
-
+import Edit from "./src/screens/Edit";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -26,6 +26,7 @@ export default function App() {
                 <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
                 <Stack.Screen name="CreateUser" component={CreateUser} options={{ title: 'Cadastro de Usuário' }} />
                 <Stack.Screen name="CreateFerramenta" component={CreateFerramenta} options={{ title: 'Cadastro de ferramenta' }} />
+                <Stack.Screen name="Edit" component={Edit} options={{ title: 'Atualização de ferramenta' }} />
                 <Stack.Screen name="Tabs" component={Tabs} options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>

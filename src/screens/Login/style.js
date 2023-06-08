@@ -2,12 +2,25 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create(
     {
+
+        boxLogo: {
+            marginTop: 20,
+            marginBottom: 10, 
+            alignItems: 'center',
+        },
+    
+        logo: {
+            width: 150,
+            height: 150,
+            borderRadius: 100,
+        },
+
         login: {
             backgroundColor: "#db9f04",
             flex: 1,
             padding: 30,
             alignItems: "center",
-            justifyContent: "center"
+            justifyContent: "center",
         },
 
         alert: {
@@ -26,13 +39,26 @@ const styles = StyleSheet.create(
             fontSize: 24,
             fontWeight: "bold",
             color: "#edebe8",
-            marginTop: 180,
         },
         
         label_2: {
             fontSize: 15,
             color: "#edebe8",
-            marginBottom: 100,
+            marginTop: 50,
+            marginBottom: 50,
+        },
+
+        direction: {
+            flexDirection: "row",
+            alignItems: "center",
+        },
+
+        icon: {
+            fontSize: 30,
+            right: 5,
+            bottom: 35,
+            position: "absolute",
+            color: 'rgba(255, 255, 255, 0.2)',
         },
 
         formInput: {
@@ -55,7 +81,7 @@ const styles = StyleSheet.create(
             marginBottom: 20,
             width: "100%",
             height: 56,
-            marginTop:80,
+            marginTop:50,
         },
 
         textButton: {
@@ -65,7 +91,7 @@ const styles = StyleSheet.create(
         },
 
         btnCreate: {
-            marginTop: 80,
+            marginTop: 100,
         },
 
         btnCreateText: {

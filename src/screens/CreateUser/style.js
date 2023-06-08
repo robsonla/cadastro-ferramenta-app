@@ -50,6 +50,19 @@ const styles = StyleSheet.create(
             borderRadius: 5,
         },
 
+        direction: {
+            flexDirection: "row",
+            alignItems: "center",
+        },
+
+        icon: {
+            fontSize: 30,
+            right: 10,
+            bottom: 35,
+            position: "absolute",
+            color: 'rgba(255, 255, 255, 0.2)',
+        },
+
         formButton: {
 
             backgroundColor: "#db9f04",
