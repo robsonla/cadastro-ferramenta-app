@@ -47,7 +47,7 @@ export default function Edit({navigation, route}){
                 <Text style={styles.alert}>{errorCreateFerramenta}</Text>
             }
 
-<View style={styles.direction}>
+            <View style={styles.direction}>
                 <TextInput
                     style={styles.formInput}
                     placeholder='Código'

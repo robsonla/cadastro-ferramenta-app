@@ -44,7 +44,6 @@ const styles = StyleSheet.create(
         label_2: {
             fontSize: 15,
             color: "#edebe8",
-            marginTop: 50,
             marginBottom: 50,
         },
 
